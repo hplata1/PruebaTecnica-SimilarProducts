@@ -14,9 +14,9 @@ import com.zara.similarproducts.application.outputport.SimilarProductOutPutPort;
 import com.zara.similarproducts.domain.Product;
 
 @Component
-public class SimilarProductOrchestrator implements SimilarProductsInputPort{
+public class SimilarProductOrchestrator implements SimilarProductsInputPort {
 
-    private SimilarProductOutPutPort similarProductOutPutPort;
+    private final SimilarProductOutPutPort similarProductOutPutPort;
 
     public SimilarProductOrchestrator(SimilarProductOutPutPort similarProductOutPutPort) {
         this.similarProductOutPutPort = similarProductOutPutPort;
@@ -30,7 +30,7 @@ public class SimilarProductOrchestrator implements SimilarProductsInputPort{
             List<String> productIds = parseSimilarProductIds(similarProductIds);
         
             for (String id : productIds) {
-                Product description = similarProductOutPutPort.getProductIdsDescription(id);
+                Product description = similarProductOutPutPort.getProductDescription(id);
                 if (description != null) {
                     descriptions.add(description);
                 }
@@ -41,7 +41,7 @@ public class SimilarProductOrchestrator implements SimilarProductsInputPort{
         return Collections.emptyList();
     }
     
-    private static List<String> parseSimilarProductIds(String similarProductIds) {
+    private List<String> parseSimilarProductIds(String similarProductIds) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             return objectMapper.readValue(similarProductIds, new TypeReference<List<String>>() {});
@@ -50,6 +50,4 @@ public class SimilarProductOrchestrator implements SimilarProductsInputPort{
         }
         return Collections.emptyList();
     }
-
-    
 }

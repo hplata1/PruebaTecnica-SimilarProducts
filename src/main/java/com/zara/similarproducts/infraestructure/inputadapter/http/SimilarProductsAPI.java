@@ -17,10 +17,14 @@ import com.zara.similarproducts.domain.Product;
 @RequestMapping("/product/{productId}")
 public class SimilarProductsAPI {
 
-    @Autowired
-    SimilarProductsInputPort  similarProductsInputPort;
+    private final SimilarProductsInputPort similarProductsInputPort;
 
-    @GetMapping(value = "similar", produces=MediaType.APPLICATION_JSON_VALUE)
+    @Autowired
+    public SimilarProductsAPI(SimilarProductsInputPort similarProductsInputPort) {
+        this.similarProductsInputPort = similarProductsInputPort;
+    }
+
+    @GetMapping(value = "similar", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Product>> getSimilarProducts(@PathVariable String productId) {
         List<Product> similarProducts = similarProductsInputPort.getInfoSimilarProducts(productId);
         if (similarProducts.isEmpty()) {

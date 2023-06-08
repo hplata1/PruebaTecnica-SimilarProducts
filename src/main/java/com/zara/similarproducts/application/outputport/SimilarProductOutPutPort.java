@@ -5,6 +5,6 @@ import com.zara.similarproducts.domain.Product;
 public interface SimilarProductOutPutPort {
 
         String  getSimilarProductIds(String productId);
-        Product getProductIdsDescription(String productId);
+        Product getProductDescription(String productId);
 
 }

@@ -57,9 +57,9 @@ public class SimilarProductOrchestratorTest {
         DetailProducts.add(product3);
 
         when(similarProductOutPutPort.getSimilarProductIds(productId)).thenReturn(similarProductIds);
-        when(similarProductOutPutPort.getProductIdsDescription("2")).thenReturn(product1);
-        when(similarProductOutPutPort.getProductIdsDescription("3")).thenReturn(product2);
-        when(similarProductOutPutPort.getProductIdsDescription("4")).thenReturn(null);
+        when(similarProductOutPutPort.getProductDescription("2")).thenReturn(product1);
+        when(similarProductOutPutPort.getProductDescription("3")).thenReturn(product2);
+        when(similarProductOutPutPort.getProductDescription("4")).thenReturn(null);
 
         List<Product> response = similarProductOrchestrator.getInfoSimilarProducts(productId);
         
@@ -119,9 +119,9 @@ public class SimilarProductOrchestratorTest {
         DetailProducts.add(product3);
 
         when(similarProductOutPutPort.getSimilarProductIds(productId)).thenReturn(similarProductIds);
-        when(similarProductOutPutPort.getProductIdsDescription("2")).thenReturn(product1);
-        when(similarProductOutPutPort.getProductIdsDescription("3")).thenReturn(product2);
-        when(similarProductOutPutPort.getProductIdsDescription("4")).thenReturn(product3);
+        when(similarProductOutPutPort.getProductDescription("2")).thenReturn(product1);
+        when(similarProductOutPutPort.getProductDescription("3")).thenReturn(product2);
+        when(similarProductOutPutPort.getProductDescription("4")).thenReturn(product3);
 
         List<Product> response = similarProductOrchestrator.getInfoSimilarProducts(productId);
         

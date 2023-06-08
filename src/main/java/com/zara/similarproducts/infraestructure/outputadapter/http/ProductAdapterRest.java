@@ -36,7 +36,7 @@ public class ProductAdapterRest implements SimilarProductOutPutPort {
     }
 
     @Override
-    public Product getProductIdsDescription(String productId) {
+    public Product getProductDescription(String productId) {
         String url = productApiUrl+productId;
         try {
             return restTemplate.getForObject(url, Product.class, productId);
